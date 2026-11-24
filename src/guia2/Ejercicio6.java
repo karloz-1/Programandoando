@@ -1,14 +1,20 @@
 package guia2;
 
 import javax.swing.JOptionPane;
+
 public class Ejercicio6 {
     public  void CampoNombre() {
-        String nombre = JOptionPane.showInputDialog(
-            "Escribe tu nombre: ");
-            if(nombre == null || nombre.isBlank()){
-                 JOptionPane.showMessageDialog(null, "Cancelaste la operacion o no rellenaste el campo requerido.");
-            } else {
-                 JOptionPane.showMessageDialog(null, "Hola, "+nombre.toUpperCase() + "!");
-            }
+
+        try {
+            String nombre = JOptionPane.showInputDialog(
+                    "Escribe tu nombre:");
+            // Si el usuario cancela, nombre == null
+            JOptionPane.showMessageDialog(null,
+                    "Hola, " + nombre.toUpperCase() + "!");
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Cancelaste la operacion. El nombre es requerido.");
+        }
+
     }
 }
